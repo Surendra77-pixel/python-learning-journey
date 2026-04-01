@@ -54,7 +54,28 @@ match command.split():
     # ❌ DEFAULT CASE
     case _:
         print("Invalid command")
+    
+# Example Runs-
+
+# Example 1
+#Enter command: start car
+#Starting the car...
 
 
+# Example 2
+#Enter command: check age 17
+#Minor
+
+
+# Example 3
+#Enter command: login admin
+#Enter password: 1234
+#Login successful
+
+
+# Example 4
+#Enter command: status 7
+#Odd
+#🧠 Memory Trick (Very Important)
 
         
