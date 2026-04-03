@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Python Day 1 — Surendra Manthri</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #080c14;
+    --sidebar-bg: #0c1120;
+    --card: #101827;
+    --card-border: #1e2d45;
+    --accent: #f7c948;
+    --accent-dim: #c9a12e;
+    --blue: #5b9bd5;
+    --blue-dim: #3d7ab5;
+    --green: #4ade80;
+    --red: #f87171;
+    --purple: #a78bfa;
+    --text: #dce6f5;
+    --text-muted: #7a93b4;
+    --code-bg: #0d1521;
+    --sidebar-w: 280px;
+    --header-h: 64px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--header-h);
+    background: rgba(8,12,20,.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--card-border);
+    display: flex;
+    align-items: center;
+    padding: 0 28px;
+    z-index: 100;
+    gap: 16px;
+  }
+
+  .header-logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    background: rgba(247,201,72,.1);
+    border: 1px solid rgba(247,201,72,.25);
+    padding: 4px 10px;
+    border-radius: 6px;
+    letter-spacing: .5px;
+  }
+
+  .header-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--text);
+  }
+
+  .header-badge {
+    margin-left: auto;
+    display: flex;
+    gap: 8px;
+  }
+
+  .badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .badge-yellow { background: rgba(247,201,72,.15); color: var(--accent); border: 1px solid rgba(247,201,72,.3); }
+  .badge-blue   { background: rgba(91,155,213,.15); color: var(--blue);   border: 1px solid rgba(91,155,213,.3); }
+  .badge-green  { background: rgba(74,222,128,.15); color: var(--green);  border: 1px solid rgba(74,222,128,.3); }
+
+  /* ── SIDEBAR ── */
+  aside {
+    position: fixed;
+    top: var(--header-h);
+    left: 0;
+    width: var(--sidebar-w);
+    height: calc(100vh - var(--header-h));
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--card-border);
+    overflow-y: auto;
+    padding: 20px 0 40px;
+    z-index: 90;
+  }
+
+  aside::-webkit-scrollbar { width: 4px; }
+  aside::-webkit-scrollbar-thumb { background: var(--card-border); border-radius: 4px; }
+
+  .nav-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    padding: 0 20px 8px;
+    text-transform: uppercase;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 20px;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+    transition: all .2s;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 13.5px;
+  }
+  .nav-item:hover, .nav-item.active {
+    color: var(--text);
+    background: rgba(255,255,255,.04);
+    border-left-color: var(--accent);
+  }
+  .nav-item.active { color: var(--accent); }
+
+  .nav-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-muted);
+    min-width: 24px;
+    background: rgba(255,255,255,.05);
+    border-radius: 4px;
+    text-align: center;
+    padding: 2px 4px;
+  }
+  .nav-item.active .nav-num { background: rgba(247,201,72,.15); color: var(--accent); }
+
+  /* ── MAIN ── */
+  main {
+    margin-left: var(--sidebar-w);
+    padding-top: calc(var(--header-h) + 40px);
+    padding-bottom: 80px;
+    max-width: 900px;
+    padding-left: 48px;
+    padding-right: 40px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 48px 0 56px;
+    border-bottom: 1px solid var(--card-border);
+    margin-bottom: 56px;
+    position: relative;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0;
+    width: 160px; height: 3px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+  }
+
+  .hero-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    margin-bottom: 12px;
+    letter-spacing: .5px;
+  }
+
+  .hero-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+  .hero-title span { color: var(--accent); }
+
+  .hero-desc {
+    color: var(--text-muted);
+    font-size: 15px;
+    max-width: 520px;
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    margin-bottom: 72px;
+    scroll-margin-top: calc(var(--header-h) + 20px);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .section-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .section-intro {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-left: 3px solid var(--blue);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 20px;
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 28px;
+  }
+
+  /* ── CONCEPT BLOCK ── */
+  .concept {
+    margin-bottom: 32px;
+  }
+
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  h2::before {
+    content: '';
+    display: inline-block;
+    width: 4px; height: 20px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 20px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  h3::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--card-border);
+  }
+
+  p {
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    line-height: 1.8;
+    font-size: 14.5px;
+  }
+  p strong { color: var(--text); font-weight: 500; }
+
+  /* ── CODE BLOCKS ── */
+  .code-wrap {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--card-border);
+    margin: 12px 0 20px;
+    background: var(--code-bg);
+  }
+
+  .code-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #0a111e;
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .code-bar-dots { display: flex; gap: 6px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-r { background: #f87171; }
+  .dot-y { background: var(--accent); }
+  .dot-g { background: var(--green); }
+
+  .code-lang {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .code-wrap pre {
+    margin: 0 !important;
+    padding: 16px 20px !important;
+    background: var(--code-bg) !important;
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 13px !important;
+    line-height: 1.7 !important;
+    overflow-x: auto;
+  }
+
+  .code-wrap pre::-webkit-scrollbar { height: 4px; }
+  .code-wrap pre::-webkit-scrollbar-thumb { background: var(--card-border); }
+
+  /* ── INFO BOXES ── */
+  .info-box {
+    background: rgba(91,155,213,.06);
+    border: 1px solid rgba(91,155,213,.2);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 12px 0 20px;
+    font-size: 14px;
+    color: #9dbfe8;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .info-box .icon { font-size: 16px; margin-top: 1px; flex-shrink: 0; }
+
+  .warn-box {
+    background: rgba(247,201,72,.06);
+    border: 1px solid rgba(247,201,72,.2);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 12px 0 20px;
+    font-size: 14px;
+    color: #d4a836;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .warn-box .icon { font-size: 16px; margin-top: 1px; flex-shrink: 0; }
+
+  /* ── NAMING GRID ── */
+  .naming-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 12px 0 20px;
+  }
+
+  .naming-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    text-align: center;
+  }
+
+  .naming-type {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+
+  .naming-example {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  /* ── DATA TYPE GRID ── */
+  .type-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 12px 0 20px;
+  }
+
+  .type-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .type-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  .type-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--blue);
+    margin-bottom: 2px;
+  }
+
+  .type-desc {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ── MINI PROJECT ── */
+  .project-card {
+    background: linear-gradient(135deg, #101e35 0%, #0c1828 100%);
+    border: 1px solid rgba(247,201,72,.25);
+    border-radius: 14px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(247,201,72,.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .project-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(247,201,72,.1);
+    border: 1px solid rgba(247,201,72,.3);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .project-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .project-desc {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  /* ── OPERATOR TABLE ── */
+  .op-table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; }
+  .op-table th {
+    background: var(--card);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--card-border);
+  }
+  .op-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid rgba(30,45,69,.6);
+    font-size: 13.5px;
+    color: var(--text-muted);
+  }
+  .op-table tr:hover td { background: rgba(255,255,255,.02); }
+  .op-symbol {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 13px;
+  }
+
+  /* ── METHOD TABLE ── */
+  .method-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 12px 0 20px;
+  }
+  .method-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 9px;
+    padding: 12px 14px;
+  }
+  .method-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--blue);
+    margin-bottom: 4px;
+  }
+  .method-desc {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ── ESCAPE TABLE ── */
+  .escape-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 12px 0 20px;
+  }
+  .escape-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 9px;
+    padding: 12px 14px;
+    text-align: center;
+  }
+  .escape-char {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--purple);
+    margin-bottom: 4px;
+  }
+  .escape-name {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, var(--card-border), transparent);
+    margin: 36px 0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    margin-left: var(--sidebar-w);
+    padding: 32px 48px;
+    border-top: 1px solid var(--card-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  footer strong { color: var(--accent); }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-thumb { background: var(--card-border); border-radius: 3px; }
+
+  /* ── INLINE CODE ── */
+  code:not([class]) {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    background: rgba(91,155,213,.12);
+    color: var(--blue);
+    padding: 1px 6px;
+    border-radius: 4px;
+  }
+
+  /* ── RULE LIST ── */
+  .rule-list { list-style: none; margin: 12px 0 20px; display: flex; flex-direction: column; gap: 8px; }
+  .rule-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+  }
+  .rule-list .ok  { color: var(--green);  font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  .rule-list .no  { color: var(--red);    font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  .rule-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--text);
+  }
+
+  @media (max-width: 768px) {
+    aside { display: none; }
+    main { margin-left: 0; padding-left: 20px; padding-right: 20px; }
+    footer { margin-left: 0; flex-direction: column; gap: 8px; }
+    .naming-grid, .type-grid, .method-grid, .escape-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="header-logo">py</div>
+  <div class="header-title">Python Day 1 — Complete Foundations</div>
+  <div class="header-badge">
+    <span class="badge badge-yellow">Day 1</span>
+    <span class="badge badge-blue">Beginner</span>
+    <span class="badge badge-green">10 Topics</span>
+  </div>
+</header>
+
+<!-- ── SIDEBAR ── -->
+<aside>
+  <div class="nav-label">Contents</div>
+  <a class="nav-item active" href="#variables"><span class="nav-num">01</span> Variables</a>
+  <a class="nav-item" href="#datatypes"><span class="nav-num">02</span> Data Types</a>
+  <a class="nav-item" href="#conversions"><span class="nav-num">03</span> Conversions</a>
+  <a class="nav-item" href="#inputoutput"><span class="nav-num">04</span> Input & Output</a>
+  <a class="nav-item" href="#strings"><span class="nav-num">05</span> Strings</a>
+  <a class="nav-item" href="#fstrings"><span class="nav-num">06</span> F-Strings & Formatting</a>
+  <a class="nav-item" href="#methods"><span class="nav-num">07</span> String Methods</a>
+  <a class="nav-item" href="#escape"><span class="nav-num">08</span> Escape Strings</a>
+  <a class="nav-item" href="#operators"><span class="nav-num">09</span> Operators</a>
+  <a class="nav-item" href="#miniproject"><span class="nav-num">10</span> Mini Project ⭐</a>
+</aside>
+
+<!-- ── MAIN ── -->
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-tag">🐍 python learning journal</div>
+    <h1 class="hero-title">Complete<br/><span>Foundations</span></h1>
+    <p class="hero-desc">
+      Day 1 of my Python journey — covering all core concepts from variables to operators,
+      with a mini project at the end. Every concept is explained the way I understood it,
+      in my own voice.
+    </p>
+    <div class="hero-meta">
+      <span class="badge badge-yellow">👨‍💻 Surendra Manthri</span>
+      <span class="badge badge-blue">🎯 Aspiring Full Stack Developer</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════ 01 VARIABLES ═══════════════════════════════════ -->
+  <section class="section" id="variables">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(247,201,72,.1)">📦</div>
+      <div>
+        <div class="section-num">01</div>
+        <div class="section-title">Variables</div>
+      </div>
+    </div>
+
+    <div class="section-intro">
+      Variables store data in computer memory. <strong>Mnemonic variables</strong> are recommended —
+      a mnemonic variable is a variable name that can be easily remembered and associated.
+      A variable refers to a memory address in which data is stored.
+    </div>
+
+    <div class="concept">
+      <p>A variable has a <strong>name</strong> to identify it, its value can change anytime, and it is created the moment you assign a value to it. It can hold different types of data — numbers, strings, lists, and so on.</p>
+    </div>
+
+    <!-- Variable Rule -->
+    <h2>The Variable Rules</h2>
+    <p>Not everything is allowed when naming a variable. Numbers at the beginning, special characters, and hyphens are not allowed.</p>
+
+    <ul class="rule-list">
+      <li><span class="ok">✓ OK</span><span class="rule-code">MYVAR = "JOHN"</span> — uppercase is fine</li>
+      <li><span class="ok">✓ OK</span><span class="rule-code">myvar = "JOHN"</span> — lowercase is fine</li>
+      <li><span class="no">✗ NO</span><span class="rule-code">my-var = "JOHN"</span> — hyphens are not allowed</li>
+      <li><span class="no">✗ NO</span><span class="rule-code">my var = "JOHN"</span> — spaces are not allowed</li>
+    </ul>
+
+    <!-- Naming Conventions -->
+    <h2>Multiple Word Variable Names</h2>
+    <p>When a variable name has multiple words, there are three popular conventions to follow:</p>
+
+    <div class="naming-grid">
+      <div class="naming-card">
+        <div class="naming-type">Camel Case</div>
+        <div class="naming-example">myVariableName</div>
+      </div>
+      <div class="naming-card">
+        <div class="naming-type">Pascal Case</div>
+        <div class="naming-example">MyVariableName</div>
+      </div>
+      <div class="naming-card">
+        <div class="naming-type">Snake Case</div>
+        <div class="naming-example">my_variable_name</div>
+      </div>
+    </div>
+
+    <!-- Multiple values -->
+    <h2>Assigning Multiple Values to Multiple Variables</h2>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">x, y, z = 10, 20, 30
+print(x)  # Output: 10
+print(y)  # Output: 20
+print(z)  # Output: 30</code></pre>
+    </div>
+
+    <h2>One Value to Multiple Variables</h2>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">x = y = z = 10
+print(x)  # Output: 10
+print(y)  # Output: 10
+print(z)  # Output: 10</code></pre>
+    </div>
+
+    <h2>Unpacking a Collection</h2>
+    <p>If you have a collection of values in a list, tuple, or any other iterable, you can unpack them into individual variables — this is called <strong>unpacking a collection</strong>.</p>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">fruits = ["apple", "banana", "cherry"]
+x, y, z = fruits
+print(x)  # Output: apple
+print(y)  # Output: banana
+print(z)  # Output: cherry</code></pre>
+    </div>
+
+    <h2>Output Variables</h2>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">x = "python"
+y = "is"
+z = "awesome"
+print(x, y, z)   # Output: python is awesome
+print(x + y + z)  # Output: pythonisawesome</code></pre>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════ 02 DATA TYPES ═══════════════════════════════════ -->
+  <section class="section" id="datatypes">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(91,155,213,.1)">🧱</div>
+      <div>
+        <div class="section-num">02</div>
+        <div class="section-title">Data Types</div>
+      </div>
+    </div>
+
+    <div class="section-intro">
+      Data types define the type of value a variable can store. They tell Python what kind of data you are working with. Python has several built-in data types.
+    </div>
+
+    <div class="type-grid">
+      <div class="type-card"><div class="type-dot" style="background:#f87171"></div><div><div class="type-name">int</div><div class="type-desc">Integer numbers — whole numbers like 5, 100, -20</div></div></div>
+      <div class="type-card"><div class="type-dot" style="background:#fbbf24"></div><div><div class="type-name">float</div><div class="type-desc">Floating-point numbers — decimals like 3.14, 2.5</div></div></div>
+      <div class="type-card"><div class="type-dot" style="background:#a78bfa"></div><div><div class="type-name">complex</div><div class="type-desc">Complex numbers like 2+3j</div></div></div>
+      <div class="type-card"><div class="type-dot" style="background:#4ade80"></div><div><div class="type-name">str</div><div class="type-desc">Text strings — "Hello, World!"</div></div></div>
+      <div class="type-card"><div class="type-dot" style="background:#5b9bd5"></div><div><div class="type-name">bool</div><div class="type-desc">Boolean — True or False</div></div></div>
+      <div class="type-card"><div class="type-dot" style="background:#f97316"></div><div><div class="type-name">list</div><div class="type-desc">Ordered, mutable collection — [1, 2, 3]</div></div></div>
+      <div class="type-card"><div class="type-dot" style="background:#ec4899"></div><div><div class="type-name">tuple</div><div class="type-desc">Ordered, immutable collection — (1, 2, 3)</div></div></div>
+      <div class="type-card"><div class="type-dot" style="background:#14b8a6"></div><div><div class="type-name">dict</div><div class="type-desc">Key-value pairs — {"name": "Alice"}</div></div></div>
+      <div class="type-card"><div class="type-dot" style="background:#84cc16"></div><div><div class="type-name">set</div><div class="type-desc">Collection of unique values — {1, 2, 3}</div></div></div>
+      <div class="type-card"><div class="type-dot" style="background:#94a3b8"></div><div><div class="type-name">None</div><div class="type-desc">Absence of a value — NoneType</div></div></div>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">x = 5             # int
+y = "Hello"       # str
+z = 3.14          # float
+w = 2 + 3j        # complex
+is_true = True    # bool
+my_list = [1, 2, 3, 4, 5]             # list
+my_tuple = (1, 2, 3, 4, 5)           # tuple
+my_dict = {"name": "Alice", "age": 30}  # dict
+my_set = {1, 2, 3, 4, 5}             # set
+my_none = None                        # NoneType</code></pre>
+    </div>
+
+    <h2>Checking Data Type with type()</h2>
+    <p>We can use the built-in <code>type()</code> function to check the data type of any variable.</p>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">x = "Surendra"
+print(type(x))  # Output: &lt;class 'str'&gt;</code></pre>
+    </div>
+
+    <h2>Random Number</h2>
+    <p>Python does not have a built-in <code>random()</code> function, but it has a <strong>random module</strong> that contains functions to generate random numbers.</p>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">import random
+print(random.randrange(1, 10))  # Output: a random number between 1 and 10</code></pre>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════ 03 CONVERSIONS ═══════════════════════════════════ -->
+  <section class="section" id="conversions">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(74,222,128,.1)">🔄</div>
+      <div>
+        <div class="section-num">03</div>
+        <div class="section-title">Conversions</div>
+      </div>
+    </div>
+
+    <div class="section-intro">
+      There are a few types of conversion in Python: <strong>Type Conversion</strong>, <strong>Type Casting</strong>, and <strong>Type Checking</strong>.
+    </div>
+
+    <h2>Type Conversion (Implicit)</h2>
+    <p>The <strong>automatic</strong> conversion of one data type to another is called type conversion, also known as <em>implicit type conversion</em> or coercion. Python automatically converts one data type to another when it is necessary to perform an operation.</p>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">x = 5      # integer
+y = 2.0    # float
+z = x + y  # the integer 5 is automatically converted to float 5.0
+print(z)   # Output: 7.0</code></pre>
+    </div>
+
+    <h2>Type Casting (Explicit)</h2>
+    <p>Type casting is the process of converting a variable from one data type to another <strong>explicitly</strong>. In Python, we use built-in functions like <code>int()</code>, <code>float()</code>, <code>str()</code>, etc.</p>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">x = 5
+y = float(x)  # explicitly convert integer to float
+print(y)      # Output: 5.0</code></pre>
+    </div>
+
+    <h2>Type Checking</h2>
+    <p>Type checking is the process of verifying the data type of a variable or expression using the <code>type()</code> function.</p>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">x = ["Apple", "Banana", "Cherry"]  # list
+print(type(x))  # Output: &lt;class 'list'&gt;</code></pre>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════ 04 INPUT & OUTPUT ═══════════════════════════════════ -->
+  <section class="section" id="inputoutput">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(167,139,250,.1)">⌨️</div>
+      <div>
+        <div class="section-num">04</div>
+        <div class="section-title">Input & Output</div>
+      </div>
+    </div>
+
+    <div class="section-intro">
+      <strong>Input</strong> is data a program receives from the user or another source. <strong>Output</strong> is data a program produces as a result of processing. In Python we use <code>input()</code> to get input and <code>print()</code> to display output.
+    </div>
+
+    <h2>Getting Input from the User</h2>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">name = input("What is your name? ")
+print("Hello, " + name + "!")  # Output: Hello, [name]!
+
+age = input("What is your age? ")
+print("You are " + age + " years old.")  # Output: You are [age] years old.</code></pre>
+    </div>
+
+    <h2>Outputting Data to the Console</h2>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">x = 5
+y = 10
+print("The value of x is:", x)  # Output: The value of x is: 5
+print("The value of y is:", y)  # Output: The value of y is: 10</code></pre>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════ 05 STRINGS ═══════════════════════════════════ -->
+  <section class="section" id="strings">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(249,115,22,.1)">📝</div>
+      <div>
+        <div class="section-num">05</div>
+        <div class="section-title">Strings</div>
+      </div>
+    </div>
+
+    <div class="section-intro">
+      Strings play a crucial role in Python — they represent and manipulate text data. A string is a sequence of characters enclosed in single quotes (<code>' '</code>) or double quotes (<code>" "</code>). Strings are <strong>immutable</strong>, meaning once created, they cannot be changed. You can, however, create new strings by concatenating or slicing existing ones.
+    </div>
+
+    <h2>Multi-line Strings</h2>
+    <p>Using triple quotes allows us to create a multi-line string that spans multiple lines without escape characters.</p>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">print("""This is surendra
+      im here to learn python""")</code></pre>
+    </div>
+
+    <h2>Strings as an Array (Indexing)</h2>
+    <p>A string in Python behaves like an array of characters. Each character has an index (position), starting from 0.</p>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">a = "The python is the interesting language"
+print(a[0])  # Output: T
+print(a[1])  # Output: h</code></pre>
+    </div>
+
+    <h2>Looping Through a String</h2>
+    <p>Using a <code>for</code> loop, we can iterate through each character in a string one by one.</p>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">for x in "This is surendra":
+    print(x)  # prints each character on a new line</code></pre>
+    </div>
+
+    <h2>Checking the Length with len()</h2>
+    <p>We use the built-in <code>len()</code> function to check the length of a string. It counts every character including spaces and punctuation.</p>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">a = "The python is the interesting language"
+print(len(a))  # Output: 39</code></pre>
+    </div>
+
+    <h2>Checking if a Substring Exists</h2>
+    <p>We can use <code>in</code>, <code>not in</code>, <code>if</code>, and <code>if not</code> to check whether a substring is inside a string.</p>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">a = "The python is the interesting language"
+
+# Using 'in'
+print("python" in a)    # Output: True
+
+# Using 'not in'
+print("java" not in a)  # Output: True
+
+# Using 'if'
+if "python" in a:
+    print("Yes, 'python' is present in the string.")
+
+# Using 'if not'
+if "java" not in a:
+    print("No, 'java' is not present in the string.")</code></pre>
+    </div>
+
+    <h2>Slicing Strings</h2>
+    <p>We use slicing to extract a portion of a string. The syntax is <code>string[start:end]</code> — <em>start</em> is inclusive, <em>end</em> is exclusive.</p>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">b = "The python is the interesting language"
+print(b[2:5])   # Output: e p  (index 2 to 4)
+
+# Slice from start
+A = "This is surendra"
+print(A[:4])    # Output: This
+
+# Slice to end
+a = "The himalayas is the highest mountain range in the world"
+print(a[5:])    # Output: himalayas is the highest mountain range in the world</code></pre>
+    </div>
+
+    <h2>Negative Slicing</h2>
+    <p>Negative indices count from the end of the string, with <code>-1</code> being the last character.</p>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">x = "The ai is the future"
+print(x[-6:-1])  # Output: futur
+print(x[-6:])    # Output: future
+print(x[:-6])    # Output: The ai is the</code></pre>
+    </div>
+
+    <h2>Reversing a String</h2>
+    <p>We can reverse a string using slicing with a step of <code>-1</code>.</p>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">a = "The ai is the future"
+print(a[::-1])  # Output: erutuf eht si ia ehT</code></pre>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════ 06 F-STRINGS ═══════════════════════════════════ -->
+  <section class="section" id="fstrings">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(247,201,72,.1)">✨</div>
+      <div>
+        <div class="section-num">06</div>
+        <div class="section-title">F-Strings & Format Strings</div>
+      </div>
+    </div>
+
+    <div class="section-intro">
+      F-strings are a way to format strings in Python by embedding expressions inside string literals. They are denoted by prefixing the string with the letter <code>f</code> or <code>F</code>. They are the modern, recommended way to format strings.
+    </div>
+
+    <h2>Basic F-Strings</h2>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">name = "Surendra"
+age = 25
+print(f"My name is {name} and I am {age} years old.")
+# Output: My name is Surendra and I am 25 years old.</code></pre>
+    </div>
+
+    <h2>The :.2f Format Specifier</h2>
+    <p>The <code>:.2f</code> format specifier formats a floating-point number to a specific number of decimal places. <code>2f</code> means the number will be formatted to <strong>2 decimal places</strong>.</p>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">a = 3.14159
+print(f"The value of pi is approximately {a:.2f}.")
+# Output: The value of pi is approximately 3.14.
+
+price = 59
+text = f"The price of the item is ${price:.2f}."
+print(text)  # Output: The price of the item is $59.00.</code></pre>
+    </div>
+
+    <h2>Operations Inside F-Strings</h2>
+    <p>We can perform operations and call functions directly inside f-string expressions.</p>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">x = 10
+y = 20
+print(f"The sum of {x} and {y} is {x + y}.")
+# Output: The sum of 10 and 20 is 30.
+
+name = "python"
+print(f"The length of the name is {len(name)}.")
+# Output: The length of the name is 6.
+
+print(f"The popular language is now {name.upper()}.")
+# Output: The popular language is now PYTHON.</code></pre>
+    </div>
+
+    <h2>Unpacking a Collection in F-Strings</h2>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">languages = "python"
+a, b, c, d, e, f = languages
+print(a)  # p
+print(b)  # y
+print(c)  # t
+print(d)  # h
+print(e)  # o
+print(f)  # n</code></pre>
+    </div>
+
+    <h2>The .format() Method</h2>
+    <p>The <code>format()</code> method uses placeholders <code>{}</code> in the string and passes values as arguments to fill them.</p>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">name = "Surendra"
+age = 25
+print("My name is {} and I am {} years old.".format(name, age))
+# Output: My name is Surendra and I am 25 years old.</code></pre>
+    </div>
+
+    <h2>Old Printf-Style Formatting (Legacy)</h2>
+    <p>This comes from the C language style and is called <em>printf-style formatting</em>. It is not used in modern Python 3.</p>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">name = "Surendra"
+age = 21
+print("My name is %s and I am %d years old" % (name, age))
+# Output: My name is Surendra and I am 21 years old
+
+# %s  → used for strings
+# %d  → used for integers
+# %f  → used for floating-point numbers</code></pre>
+    </div>
+
+    <div class="warn-box"><span class="icon">⚠️</span><span>Printf-style formatting (<code>%s</code>, <code>%d</code>, <code>%f</code>) is considered legacy. Use f-strings in modern Python 3 code.</span></div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════ 07 STRING METHODS ═══════════════════════════════════ -->
+  <section class="section" id="methods">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(74,222,128,.1)">🔧</div>
+      <div>
+        <div class="section-num">07</div>
+        <div class="section-title">String Methods</div>
+      </div>
+    </div>
+
+    <div class="section-intro">
+      Strings are immutable in Python — once created, they cannot be changed. However, we can create a new string by modifying the original using various string methods.
+    </div>
+
+    <div class="method-grid">
+      <div class="method-card"><div class="method-name">upper()</div><div class="method-desc">Converts all characters to uppercase</div></div>
+      <div class="method-card"><div class="method-name">lower()</div><div class="method-desc">Converts all characters to lowercase</div></div>
+      <div class="method-card"><div class="method-name">strip()</div><div class="method-desc">Removes leading and trailing whitespace</div></div>
+      <div class="method-card"><div class="method-name">lstrip()</div><div class="method-desc">Removes only leading whitespace</div></div>
+      <div class="method-card"><div class="method-name">rstrip()</div><div class="method-desc">Removes only trailing whitespace</div></div>
+      <div class="method-card"><div class="method-name">replace()</div><div class="method-desc">Replaces all occurrences of a substring</div></div>
+      <div class="method-card"><div class="method-name">split()</div><div class="method-desc">Splits string into a list by delimiter</div></div>
+      <div class="method-card"><div class="method-name">capitalize()</div><div class="method-desc">Capitalizes first character, rest lowercase</div></div>
+      <div class="method-card"><div class="method-name">casefold()</div><div class="method-desc">Aggressive lowercase for caseless matching</div></div>
+      <div class="method-card"><div class="method-name">count()</div><div class="method-desc">Counts occurrences of a substring</div></div>
+      <div class="method-card"><div class="method-name">find()</div><div class="method-desc">Returns lowest index of substring, or -1</div></div>
+      <div class="method-card"><div class="method-name">endswith()</div><div class="method-desc">Returns True if string ends with suffix</div></div>
+      <div class="method-card"><div class="method-name">startswith()</div><div class="method-desc">Returns True if string starts with prefix</div></div>
+      <div class="method-card"><div class="method-name">join()</div><div class="method-desc">Joins a list of strings with a separator</div></div>
+      <div class="method-card"><div class="method-name">title()</div><div class="method-desc">Title-cases each word in the string</div></div>
+      <div class="method-card"><div class="method-name">isupper() / islower()</div><div class="method-desc">Checks if all chars are upper/lower case</div></div>
+      <div class="method-card"><div class="method-name">isalpha()</div><div class="method-desc">True if all characters are alphabetic</div></div>
+      <div class="method-card"><div class="method-name">isalnum()</div><div class="method-desc">True if all characters are alphanumeric</div></div>
+      <div class="method-card"><div class="method-name">encode()</div><div class="method-desc">Returns encoded version of string (bytes)</div></div>
+      <div class="method-card"><div class="method-name">expandtabs()</div><div class="method-desc">Replaces tab characters with spaces</div></div>
+    </div>
+
+    <h2>Code Examples</h2>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">a = "Surendra"
+print(a.upper())    # Output: SURENDRA
+print(a.lower())    # Output: surendra
+
+a = "  surendra  "
+print(a.strip())    # Output: surendra
+print(a.lstrip())   # Output: surendra   (trailing whitespace remains)
+print(a.rstrip())   # Output:   surendra (leading whitespace remains)
+
+a = "The ai is the future"
+print(a.replace("ai", "artificial intelligence"))
+# Output: The artificial intelligence is the future
+
+print(a.split())
+# Output: ['The', 'ai', 'is', 'the', 'future']
+
+a = "the ai is the future"
+print(a.capitalize())  # Output: The ai is the future
+print(a.title())       # Output: The Ai Is The Future
+print(a.casefold())    # Output: the ai is the future
+
+a = "The Then That There"
+print(a.count("Th"))   # Output: 4
+
+a = "The ai is the future"
+print(a.find("ai"))    # Output: 4
+print(a.endswith("future"))   # Output: True
+print(a.startswith("The"))    # Output: True
+
+my_list = ["The", "ai", "is", "the", "future"]
+print(" ".join(my_list))  # Output: The ai is the future</code></pre>
+    </div>
+
+    <h2>Modifying Strings (Workaround for Immutability)</h2>
+    <p>Since strings are immutable, we use slicing and concatenation to create a "modified" version.</p>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">a = "The ai is the future"
+b = a[:10] + "amazing " + a[10:]
+print(b)  # Output: The ai is amazing the future</code></pre>
+    </div>
+
+    <h2>String Concatenation</h2>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">a = "The ai is the future"
+b = " and it is amazing"
+c = a + b
+print(c)  # Output: The ai is the future and it is amazing
+
+# Operator precedence: * is evaluated before +
+c = a + b * 2
+print(c)  # Output: The ai is the future and it is amazing and it is amazing</code></pre>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════ 08 ESCAPE STRINGS ═══════════════════════════════════ -->
+  <section class="section" id="escape">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(167,139,250,.1)">🔡</div>
+      <div>
+        <div class="section-num">08</div>
+        <div class="section-title">Escape Strings</div>
+      </div>
+    </div>
+
+    <div class="section-intro">
+      Escape strings are used to represent special characters inside a string that would otherwise be difficult or impossible to include. They always start with a backslash <code>\</code>.
+    </div>
+
+    <div class="escape-grid">
+      <div class="escape-card"><div class="escape-char">\'</div><div class="escape-name">Single Quote</div></div>
+      <div class="escape-card"><div class="escape-char">\"</div><div class="escape-name">Double Quote</div></div>
+      <div class="escape-card"><div class="escape-char">\\</div><div class="escape-name">Backslash</div></div>
+      <div class="escape-card"><div class="escape-char">\n</div><div class="escape-name">New Line</div></div>
+      <div class="escape-card"><div class="escape-char">\t</div><div class="escape-name">Tab</div></div>
+      <div class="escape-card"><div class="escape-char">\b</div><div class="escape-name">Backspace</div></div>
+    </div>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python"># Single quote
+a = "This is the \' python \' code"
+print(a)  # Output: This is the ' python 'code
+
+# Double quote
+b = "This is the \" python \" code"
+print(b)  # Output: This is the " python "code
+
+# Backslash
+c = "This is the \\ python \\code"
+print(c)  # Output: This is the \ python \code
+
+# New line
+d = "This is the python code \n which is used for the programming"
+print(d)
+# Output:
+# This is the python code
+#  which is used for the programming
+
+# Tab
+e = "This is the python code \t which is used for the programming"
+print(e)  # Output: This is the python code     which is used for the programming
+
+# Backspace
+f = "This is the python code \b which is used for the programming"
+print(f)  # Output: This is the python cod which is used for the programming</code></pre>
+    </div>
+
+    <h2>Slicing with Escape Awareness</h2>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">g = "This is the python code which is used for the programming"
+print(g[0:10])  # Output: This is th</code></pre>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════ 09 OPERATORS ═══════════════════════════════════ -->
+  <section class="section" id="operators">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(248,113,113,.1)">⚡</div>
+      <div>
+        <div class="section-num">09</div>
+        <div class="section-title">Operators</div>
+      </div>
+    </div>
+
+    <div class="section-intro">
+      Operators are used to perform operations on variables and values. Python has seven categories of operators, each serving a different purpose.
+    </div>
+
+    <h2>Arithmetic Operators</h2>
+
+    <table class="op-table">
+      <tr><th>Operator</th><th>Name</th><th>Example</th><th>Output</th></tr>
+      <tr><td class="op-symbol">+</td><td>Addition</td><td><code>10 + 5</code></td><td>15</td></tr>
+      <tr><td class="op-symbol">-</td><td>Subtraction</td><td><code>10 - 5</code></td><td>5</td></tr>
+      <tr><td class="op-symbol">*</td><td>Multiplication</td><td><code>10 * 5</code></td><td>50</td></tr>
+      <tr><td class="op-symbol">/</td><td>Division</td><td><code>10 / 5</code></td><td>2.0</td></tr>
+      <tr><td class="op-symbol">%</td><td>Modulus</td><td><code>10 % 5</code></td><td>0</td></tr>
+      <tr><td class="op-symbol">**</td><td>Exponentiation</td><td><code>10 ** 5</code></td><td>100000</td></tr>
+      <tr><td class="op-symbol">//</td><td>Floor Division</td><td><code>10 // 5</code></td><td>2</td></tr>
+    </table>
+
+    <h2>Comparison Operators</h2>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">x = 10
+y = 20
+print(x == y)  # False — equal to
+print(x != y)  # True  — not equal to
+print(x > y)   # False — greater than
+print(x < y)   # True  — less than
+print(x >= y)  # False — greater than or equal to
+print(x <= y)  # True  — less than or equal to</code></pre>
+    </div>
+
+    <h2>Logical Operators</h2>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">a = True
+b = False
+print(a and b)  # False — both must be True
+print(a or b)   # True  — at least one must be True
+print(not a)    # False — opposite of a</code></pre>
+    </div>
+
+    <h2>Assignment Operators</h2>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">x = 10
+x += 5   # x = 15  (add and assign)
+x -= 3   # x = 12  (subtract and assign)
+x *= 2   # x = 24  (multiply and assign)
+x /= 4   # x = 6.0 (divide and assign)
+x %= 3   # x = 0.0 (modulus and assign)
+x **= 2  # x = 0.0 (power and assign)
+x //= 2  # x = 0.0 (floor divide and assign)</code></pre>
+    </div>
+
+    <h2>Bitwise Operators</h2>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">a = 5   # binary: 0101
+b = 3   # binary: 0011
+print(a & b)   # Output: 1  (AND  → 0001)
+print(a | b)   # Output: 7  (OR   → 0111)
+print(a ^ b)   # Output: 6  (XOR  → 0110)
+print(~a)      # Output: -6 (NOT  → 11111010)
+print(a << 1)  # Output: 10 (Left shift  → 1010)
+print(a >> 1)  # Output: 2  (Right shift → 0010)</code></pre>
+    </div>
+
+    <h2>Identity Operators</h2>
+    <p>Identity operators compare the <strong>memory location</strong> of two objects, not their values.</p>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">x = 10
+y = 10
+print(x is y)      # True  — same memory object (small ints are cached)
+print(x is not y)  # False</code></pre>
+    </div>
+
+    <h2>Membership Operators</h2>
+    <p>Membership operators test if a value is present in a sequence (list, tuple, string, etc.).</p>
+
+    <div class="code-wrap">
+      <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+      <pre><code class="language-python">my_list = [1, 2, 3, 4, 5]
+print(3 in my_list)      # True
+print(6 in my_list)      # False
+print(3 not in my_list)  # False
+print(6 not in my_list)  # True
+
+# Also works with strings
+my_string = "Hello, World!"
+print("Hello" in my_string)      # True
+print("Python" in my_string)     # False
+print("Hello" not in my_string)  # False
+print("Python" not in my_string) # True</code></pre>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════ 10 MINI PROJECT ═══════════════════════════════════ -->
+  <section class="section" id="miniproject">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(247,201,72,.15)">⭐</div>
+      <div>
+        <div class="section-num">10</div>
+        <div class="section-title">Mini Project</div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-badge">🎯 Day 1 Mini Project</div>
+      <div class="project-title">User Information Card</div>
+      <div class="project-desc">
+        This is the assignment of the mini project — implementing everything I learned on Day 1 of Python.
+        It uses operators, escape strings, and format strings to create a simple formatted card that includes
+        the name, age, city, and hobby of the user. The card is decorated with escape strings and operators.
+      </div>
+
+      <div class="code-wrap">
+        <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">python</span></div>
+        <pre><code class="language-python"># Taking the user input for the card details
+name  = input("Enter your name: ")
+age   = int(input("Enter your age: "))
+city  = input("Enter your city: ")
+hobby = input("Enter your hobby: ")
+
+# Printing the formatted card using f-strings and escape strings
+print("\n" + "=" * 30)       # line of 30 = signs to decorate the card
+print("     user information card")
+print("=" * 30)
+print(f"Name  : {name}")     # name of the user
+print(f"Age   : {age}")      # age of the user
+print(f"City  : {city}")     # city of the user
+print(f"Hobby : {hobby}")    # hobby of the user
+print("=" * 30)</code></pre>
+      </div>
+
+      <h3>Sample Output</h3>
+      <div class="code-wrap">
+        <div class="code-bar"><div class="code-bar-dots"><div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div></div><span class="code-lang">output</span></div>
+        <pre><code class="language-bash">==============================
+     user information card
+==============================
+Name  : Surendra
+Age   : 25
+City  : Chennai
+Hobby : Programming
+==============================</code></pre>
+      </div>
+
+      <div class="info-box"><span class="icon">💡</span><span>This mini project combines <strong>input()</strong>, <strong>f-strings</strong>, <strong>escape strings (\n)</strong>, and <strong>operators (*)</strong> — all the concepts from Day 1 in one clean program.</span></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span>Built with 🐍 Python Day 1 — by <strong>Surendra Manthri</strong></span>
+  <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--card-border)">🎯 Aspiring Full Stack Developer · Python · Web Dev · AI</span>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+<script>
+  // Sidebar active tracking
+  const navItems = document.querySelectorAll('.nav-item');
+  const sections = document.querySelectorAll('section.section');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navItems.forEach(item => {
+          item.classList.toggle('active', item.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { threshold: 0.3, rootMargin: '-60px 0px -40% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
