@@ -1,12 +1,19 @@
 #Variables store data in a computer memory. Mnemonic variables are recommended to use in many programming languages. A mnemonic variable is a variable name that can be easily remembered and associated. A variable refers to a memory address in which data is stored. Number at the beginning, special character, hyphen are not allowed when naming a variable. A variable can have a short name (like x, y, z), but a more descriptive name (firstname, lastname, age, country) is highly recommended.
 
 x=5 #This is an integer variable that holds the value 5.
+
 y="python is awesome" # This is a string variable that holds the value "python is awesome".
+
 X=[1,2,3,4,5]  #This is a list variable that holds an ordered collection of values.
+
 X={"Name":"Surendra","Age":30} # This is a dictionary variable that holds key-value pairs.
+
 X=(1,2,3,4,5) # This is a tuple variable that holds an ordered collection of values.
+
 X=(20.5,30.5,40.5) # This is a tuple variable that holds decimal values.
+
 X=True / False # This is a boolean variable that can hold either True or False.
+
 X=None # This is a variable that holds the value None, which represents the absence of a value.
 
 

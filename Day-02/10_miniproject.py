@@ -78,4 +78,81 @@ match command.split():
 #Odd
 #🧠 Memory Trick (Very Important)
 
-        
+
+#The simple clear code-    
+
+print("=== Smart CLI Assistant ===")
+
+
+
+command = input("Enter command: ").lower()
+
+match command.split():
+
+    case ["start", vehicle]:
+
+        if vehicle in ["car", "bike", "bus"]:  # membership operator
+
+            print(f"Starting the {vehicle}...")
+
+        else:
+
+            print("Unknown vehicle")
+
+    case ["stop", vehicle]:
+
+        print(f"Stopping the {vehicle}...")
+
+    case ["check", "age", age]:
+
+        age = int(age)
+
+
+
+        if age < 18:
+
+            print("Minor")
+
+        elif age >= 18 and age <= 60:   # logical operator
+
+            print("Adult")
+
+        else:
+
+            print("Senior Citizen")
+
+    case ["login", username]:
+
+        password = input("Enter password: ")
+
+
+
+        if username == "admin":
+
+            if password == "1234":
+
+                print("Login successful")
+
+            else:
+
+                print("Wrong password")
+
+        else:
+
+            print("User not found")
+
+    case ["status", number]:
+
+        number = int(number)
+
+        print("Even" if number % 2 == 0 else "Odd")
+
+    case ["update"]:
+
+        pass  # placeholder for future feature
+
+
+
+    case _:
+
+        print("Invalid command")
