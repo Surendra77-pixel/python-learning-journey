@@ -1,4 +1,6 @@
-#fstrings- we can combine the strings and variables using f-strings in python. F-strings are a way to format strings in python by embedding expressions inside string literals. They are denoted by prefixing the string with the letter 'f' or 'F'. Here is an example of how to use f-strings:    
+                                #fstrings-
+                                 
+# we can combine the strings and variables using f-strings in python. F-strings are a way to format strings in python by embedding expressions inside string literals. They are denoted by prefixing the string with the letter 'f' or 'F'. Here is an example of how to use f-strings:    
 name="Surendra"
 age=25
 print(f"My name is {name} and I am {age} years old.") # Output: My name is Surendra and I am 25 years old. - The f-string allows us to embed the variables name and age directly within the string, making it easier to read and write formatted strings.   

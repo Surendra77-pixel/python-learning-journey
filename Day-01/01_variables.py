@@ -42,8 +42,8 @@ print(x) # Output: 10
 print(y) # Output: 10
 print(z) # Output: 10
 
-#unpacking a collection
-#if you have a collection of values in a list, tuple, or any other iterable, you can unpack them into individual variables this is called unpacking a collection
+#unpacking a collection:
+# #if you have a collection of values in a list, tuple, or any other iterable, you can unpack them into individual variables this is called unpacking a collection
 fruits=["apple","banana","cherry"]  
 x,y,z=fruits
 print(x) # Output: apple
