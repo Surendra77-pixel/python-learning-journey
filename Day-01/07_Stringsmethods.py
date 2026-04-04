@@ -27,8 +27,16 @@ a="  surendra  "
 print(a.rstrip()) # Output:   surendra - The rstrip() method removes the trailing whitespace from the string a, resulting in "   surendra" (the leading whitespace remains).
 
 #6.replace()- the replace method replaces all occurrences of a specified substring with another substring. Here is an example:
-a="The ai is the future"
-print(a.replace("ai","artificial intelligence")) # Output: The artificial intelligence is the future        
+a="The ai is the future ai"
+print(a.replace("ai","artificial intelligence")) # Output: The artificial intelligence is the future artificial intelligence - The replace() method replaces all occurrences of the substring "ai" with "artificial intelligence" in the string a, resulting in "The artificial intelligence is the future artificial intelligence". Note that both instances of "ai" are replaced in the resulting string.
+
+#6.1other example of replace method:
+a="pizza"
+print(a.replace("z","s")) # Output: pissa - The replace() method replaces all occurrences of the substring "z" with "s" in the string a, resulting in "pissa".
+#explanation: In this code, we have a string a with the value "pizza". We use the replace() method to replace all occurrences of the substring "z" with "s". Since there are two "z" characters in "pizza", both of them are replaced, resulting in the new string "pissa".
+
+
+
 
 #7.split()- the split method splits a string into a list of substrings based on a specified delimiter. Here is an example:
 a="The ai is the future"
