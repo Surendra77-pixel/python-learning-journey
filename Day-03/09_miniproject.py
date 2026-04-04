@@ -53,7 +53,7 @@ while True:
             continue
 
         balance -= amount
-        print(f"✅ Withdrawn ₹{amount}. Remaining balance: ₹{balance}")
+        print(f"Withdrawn ₹{amount}. Remaining balance: ₹{balance}")
 
     elif choice == "4":
         print("Thank you for using the bank system!")
