@@ -91,3 +91,24 @@ print("Hello" not in my_string) #Output: False - The not in operator checks if t
 print("Python" not in my_string) #Output: True - The not in operator checks if the substring "Python" is not present in my_string, which is true since "Python" is not present.
 
 #Thus the operators are used to perform various operations on variables and values in Python, allowing us to manipulate data and create complex expressions.
+
+
+#precedence of operators- The precedence of operators determines the order in which operations are performed in an expression. In Python, the precedence of operators is as follows (from highest to lowest):
+#1. Parentheses ()
+                    #the parentheses operator has the highest precedence, which means that any expression inside parentheses will be evaluated first. For example, in the expression 2 * (3 + 4), the addition inside the parentheses will be evaluated first, resulting in 2 * 7, which gives us 14.
+
+            #example of operator precedence with parentheses:
+
+print((100 + 50) * 2) #Output: 300 - In this expression, the parentheses around (100 + 50) ensure that the addition is performed first, resulting in 150. Then, the multiplication by 2 is performed, giving us the final result of 300.
+
+#2. Exponentiation **   
+                    #the exponentiation operator has the next highest precedence, which means that it will be evaluated after parentheses but before other operators. For example, in the expression 2 ** 3 + 4, the exponentiation will be evaluated first, resulting in 8 + 4, which gives us 12.
+            
+            #example of operator precedence with exponentiation:
+print(2 ** 3 + 4) #Output: 12 - In this expression, the exponentiation operator ** is evaluated first, resulting in 8. Then, the addition of 4 is performed, giving us the final result of 12.
+
+
+#3. Associativity of operators- The associativity of operators determines the order in which operators of the same precedence are evaluated in an expression. In Python, most operators are left-associative, which means that they are evaluated from left to right. For example, in the expression 10 - 5 + 2, the subtraction will be evaluated first (10 - 5), resulting in 5, and then the addition will be evaluated (5 + 2), giving us 7.
+
+#example of operator associativity:
+print(10 - 5 + 2) #Output: 7 - In this expression, the subtraction operator - is evaluated first, resulting in 5. Then, the addition operator + is evaluated, giving us the final result of 7.
