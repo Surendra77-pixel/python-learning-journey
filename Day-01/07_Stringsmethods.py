@@ -28,7 +28,7 @@ print(a.rstrip()) # Output:   surendra - The rstrip() method removes the trailin
 
 #6.replace()- the replace method replaces all occurrences of a specified substring with another substring. Here is an example:
 a="The ai is the future ai"
-print(a.replace("ai","artificial intelligence")) # Output: The artificial intelligence is the future artificial intelligence - The replace() method replaces all occurrences of the substring "ai" with "artificial intelligence" in the string a, resulting in "The artificial intelligence is the future artificial intelligence". Note that both instances of "ai" are replaced in the resulting string.
+print(a.replace("ai","artificial intelligence")) # Output: The artificial intelligence is the future artificial intelligence - The replace() method replaces all occurrences of the substring "ai" with "artificial intelligence" in the string a, resulting in "The artificial intelligence is the future artificial intelligence". Note that both instances of "ai" are replaced in the resulting string.thus the replace
 
 #6.1other example of replace method:
 a="pizza"

@@ -677,36 +677,6 @@ A two-stage system combining login security and banking operations.
 
 ---
 
-## 🔥 What's Next — Day 4
+## ⭐ Follow My Journey
 
-- Datastructures (`list ,tupes , set ,dictionary`)
-
----
-
-## ▶️ How to Run
-
-Make sure Python 3.10+ is installed, then run any file:
-
-```bash
-python Day-01/10_miniproject.py
-python Day-02/10_miniproject.py
-python Day-03/09_miniproject.py
-```
-
----
-
-## 🙌 Author
-
-**Surendra Manthri**
----
-
-## ⭐ Support
-
-If this repo helps you:
-- ⭐ Star the repository
-- 🍴 Fork it and start your own journey
-- 📢 Share it with other beginners
-
----
-
-> 💬 *"The best way to learn programming is to build things. Every mini project is a step closer to real-world development."
+Stay tuned as I continue learning and building projects daily!

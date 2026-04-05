@@ -1,158 +1,93 @@
+print("🎓 Welcome to Smart Student Assistant")
 
-# Smart CLI Assistant
+name = input("Enter your name: ")
+marks = int(input("Enter your marks: "))
+mood = input("Enter your mood (happy/sad/tired): ").lower()
+time = input("Enter time of day (morning/afternoon/night): ").lower()
 
-print("=== Smart CLI Assistant ===")
+# -------------------------------
+# 1. Grade Evaluation (if-elif-else)
+# -------------------------------
+if marks >= 90:
+    grade = "A"
+elif marks >= 75:
+    grade = "B"
+elif marks >= 50:
+    grade = "C"
+else:
+    grade = "Fail"
 
-command = input("Enter command: ").lower()
+print(f"\n📊 Grade: {grade}")
 
-# Match-case for command handling
-match command.split():
+# -------------------------------
+# 2. Nested if (performance advice)
+# -------------------------------
+if grade == "A":
+    if mood == "happy":
+        print("🔥 Keep going! You are doing excellent!")
+    else:
+        print("🙂 You are doing great, take some rest also.")
+else:
+    if marks < 50:
+        print("⚠️ You need serious improvement!")
+    else:
+        print("👍 You can improve with practice.")
 
-    # 🚗 START ENGINE
-    case ["start", vehicle]:
-        if vehicle in ["car", "bike", "bus"]:  # membership operator
-            print(f"Starting the {vehicle}...")
-        else:
-            print("Unknown vehicle")
+# -------------------------------
+# 3. Logical Operators
+# -------------------------------
+if marks > 80 and mood == "happy":
+    print("🎉 Perfect combo: High marks + Good mood!")
+elif marks < 50 or mood == "tired":
+    print("💤 You need rest and revision.")
 
-    # 🛑 STOP ENGINE
-    case ["stop", vehicle]:
-        print(f"Stopping the {vehicle}...")
+# -------------------------------
+# 4. Membership Operator
+# -------------------------------
+if mood in ["sad", "tired"]:
+    print("💡 Suggestion: Take a short break or listen to music.")
 
-    # 🎂 AGE CHECKER
-    case ["check", "age", age]:
-        age = int(age)
+# -------------------------------
+# 5. Match Case (Main Decision System)
+# -------------------------------
+print("\n📌 Recommendation System:")
 
-        if age < 18:
-            print("Minor")
-        elif age >= 18 and age <= 60:   # logical operator
-            print("Adult")
-        else:
-            print("Senior Citizen")
-
-    # 🔐 LOGIN SYSTEM (Nested IF)
-    case ["login", username]:
-        password = input("Enter password: ")
-
-        if username == "admin":
-            if password == "1234":
-                print("Login successful")
-            else:
-                print("Wrong password")
-        else:
-            print("User not found")
-
-    # ⚡ QUICK CHECK (Shorthand IF)
-    case ["status", number]:
-        number = int(number)
-        print("Even" if number % 2 == 0 else "Odd")
-
-    # 🚧 FUTURE FEATURE
-    case ["update"]:
-        pass  # placeholder for future feature
-
-    # ❌ DEFAULT CASE
-    case _:
-        print("Invalid command")
+match time:
+    case "morning":
+        print("🌅 Best time to study tough subjects!")
+        
+        if marks < 60:
+            print("📚 Focus on basics today.")
     
-# Example Runs-
-
-# Example 1
-#Enter command: start car
-#Starting the car...
-
-
-# Example 2
-#Enter command: check age 17
-#Minor
-
-
-# Example 3
-#Enter command: login admin
-#Enter password: 1234
-#Login successful
-
-
-# Example 4
-#Enter command: status 7
-#Odd
-#🧠 Memory Trick (Very Important)
-
-
-#The simple clear code-    
-
-print("=== Smart CLI Assistant ===")
-
-
-
-command = input("Enter command: ").lower()
-
-match command.split():
-
-    case ["start", vehicle]:
-
-        if vehicle in ["car", "bike", "bus"]:  # membership operator
-
-            print(f"Starting the {vehicle}...")
-
-        else:
-
-            print("Unknown vehicle")
-
-    case ["stop", vehicle]:
-
-        print(f"Stopping the {vehicle}...")
-
-    case ["check", "age", age]:
-
-        age = int(age)
-
-
-
-        if age < 18:
-
-            print("Minor")
-
-        elif age >= 18 and age <= 60:   # logical operator
-
-            print("Adult")
-
-        else:
-
-            print("Senior Citizen")
-
-    case ["login", username]:
-
-        password = input("Enter password: ")
-
-
-
-        if username == "admin":
-
-            if password == "1234":
-
-                print("Login successful")
-
-            else:
-
-                print("Wrong password")
-
-        else:
-
-            print("User not found")
-
-    case ["status", number]:
-
-        number = int(number)
-
-        print("Even" if number % 2 == 0 else "Odd")
-
-    case ["update"]:
-
-        pass  # placeholder for future feature
-
-
-
+    case "afternoon":
+        print("🌤️ Practice problems and revise.")
+        
+        if mood == "tired":
+            print("😴 Take a power nap first.")
+    
+    case "night":
+        print("🌙 Light study or revision recommended.")
+        
+        if marks > 80:
+            print("✨ Try advanced problems!")
+    
     case _:
+        print("❓ Invalid time input")
 
-        print("Invalid command")
+# -------------------------------
+# 6. Match Case with Multiple Conditions
+# -------------------------------
+print("\n🎯 Activity Suggestion:")
+
+match mood:
+    case "happy":
+        print("🏃 Try learning something new!")
+    
+    case "sad":
+        print("🎧 Listen to music + light study")
+    
+    case "tired":
+        print("😴 Rest now, study later")
+    
+    case _:
+        pass   # No action
