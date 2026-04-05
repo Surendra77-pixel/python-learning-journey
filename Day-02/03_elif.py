@@ -24,5 +24,4 @@ elif score >= 60:
 else:
     print("You got an F grade.") #output: You got an F grade.
 
-#note- only the first true condition will be executed and the rest of the conditions will be ignored. if all conditions are false then the else block will be executed. for example if the score is 85 then only the second condition will be executed and the rest of the conditions will be ignored. if the score is 50 then only the last condition will be executed and the rest of the conditions will be ignored.
-
+#note- only the first true condition will be executed and the rest of the conditions will be ignored. if all conditions are false then the else block will be executed. for example if the score is 85 then only the second condition will be executed and the rest of the conditions will be ignored. if the score is 50 then only the last condition will be executed and the rest of the conditions will be ignored..

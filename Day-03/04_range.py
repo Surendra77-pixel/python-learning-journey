@@ -17,6 +17,6 @@ for i in range(1, 11, 2):
 
 #4.HERE WE PRINT THE NUMBERS FROM 10 TO 1 IN REVERSE ORDER USING THE RANGE FUNCTION-
 for i in range(10, 0, -1):
-    print(i) #output: 10 9 8 7 6 5 4 3 2 1
+    print(i) #output: 10 9 8 7 6 5 4 3 2 1 .
 
     

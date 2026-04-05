@@ -70,5 +70,4 @@ else:
         #output:
         #enter the user name:Surendra
         #enter the password:1234
-        #Login success  
-
+        #Login success .

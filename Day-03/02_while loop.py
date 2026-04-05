@@ -96,7 +96,7 @@ print("✅ Login successful 🎉")
 # Wrong password → loop repeats 🔁
 # Correct password → loop stops → login success 🎉
 
-#2. a simple code to exit the game loop:
+#2. a simple code to exit the game loop--
 
 user = input("Do you want to play the game? (yes/no): ")
 
@@ -104,4 +104,3 @@ while not user == "no":
     print("playing the game ...")
     user=input("Do you want to play the game? (yes/no): ")
     print("thanks for playing the game")
-

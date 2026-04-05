@@ -8,7 +8,4 @@ print("a is positive") if a > 0 else print("a is not positive")
 score = 84
 grade = "C" if score < 60 else "B" if score < 80 else "A"
 print(grade)
-#output: A
-
-
-
+#output: A .

@@ -28,4 +28,4 @@ print(y) # Output: 5.0
 # The types checking is the process of verifying the data type of a variable or an expression. In Python, you can use the built-in type() function to check the data type of a variable. For example:
 
 x=["Apple","Banana","Cherry"] # list   
-print(type(x)) # Output: <class 'list'>
+print(type(x)) # Output: <class 'list'>.

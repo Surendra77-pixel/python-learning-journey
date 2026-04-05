@@ -20,6 +20,5 @@ if age >= 18:
 #example of repetitive execution
 count = 0
 while count < 5:
-    print(count) #output: 0 1 2 3 4
-    count += 1
-
+    print(count) #output: 0 1 2 3 4 .
+    count += 1 

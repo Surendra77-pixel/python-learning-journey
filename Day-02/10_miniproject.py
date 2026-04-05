@@ -90,4 +90,4 @@ match mood:
         print("😴 Rest now, study later")
     
     case _:
-        pass   # No action
+        pass   # No actionn

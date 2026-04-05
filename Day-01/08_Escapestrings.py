@@ -28,4 +28,4 @@ print(f) #Output: This is the python code which is used for the programming - Th
 
 #skipping characters while slicing the string
 g="This is the python code which is used for the programming"
-print(g[0:10]) #Output: This is th - The slicing operation g[0:10] retrieves the characters from index 0 to index 9 (10 is exclusive) of the string g, resulting in the output "This is th".
+print(g[0:10]) #Output: This is th - The slicing operation g[0:10] retrieves the characters from index 0 to index 9 (10 is exclusive) of the string g, resulting in the output "This is th"..

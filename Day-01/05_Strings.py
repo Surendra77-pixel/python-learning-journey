@@ -113,5 +113,4 @@ print(a[:-6]) # Output: The ai is the - The slicing a[:-6] extracts the characte
 # we can reverse a string using slicing with a step of -1. Here is an example:
 
 a="The ai is the future"
-print(a[::-1]) # Output: erutuf eht si ia ehT - The slicing a[::-1] reverses the string a by starting from the end and moving backwards with a step of -1, resulting in "erutuf eht si ia ehT".
-
+print(a[::-1]) # Output: erutuf eht si ia ehT - The slicing a[::-1] reverses the string a by starting from the end and moving backwards with a step of -1, resulting in "erutuf eht si ia ehT"

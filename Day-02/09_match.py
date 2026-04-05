@@ -36,6 +36,4 @@ match command.split():
     case ["pause", engine]:
         print(f"Pausing the {engine} engine...") #output: Pausing the {engine} engine...
     case _:
-        print("Unknown command.") #output: Unknown command.
-
-
+        print("Unknown command.") #output: Unknown command..

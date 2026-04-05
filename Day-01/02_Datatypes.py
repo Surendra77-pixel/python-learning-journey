@@ -82,4 +82,4 @@ print(type(x)) # Output: <class 'str'> # This datatype defines a string so it sh
 
 #python do not have random() function but it has a random module that contains a random() function which can be used to generate random numbers. Here is an example:
 import random
-print(random.Random.randrange(1,10)) # Output: A random number between 1 and 10 (inclusive)
+print(random.Random.randrange(1,10)) # type: ignore # Output: A random number between 1 and 10 (inclusive).

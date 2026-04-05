@@ -14,5 +14,4 @@ match command:
     case "pause":
         print("Pausing the engine...") #output: Pausing the engine...
     case _:
-        print("Unknown command.") #output: Unknown command.
-
+        print("Unknown command.") #output: Unknown command..

@@ -16,6 +16,4 @@ age = 16
 if age >= 18:
     pass #output: (no output, the pass statement does nothing)
 else:
-    print("You are not eligible to vote.") #output: You are not eligible to vote.
-
-
+    print("You are not eligible to vote.") #output: You are not eligible to vote..

@@ -9,5 +9,4 @@ while i <= 5:
 #Let's say we are developing a game and we want to create a loop that will run until the player wins the game. We can use a while loop with a pass statement to create the structure of the loop, and then we can fill in the code later to check for the winning condition.
 game_won = False    
 while not game_won:
-    pass # This will do nothing and the loop will run indefinitely until we implement the logic to check for the winning condition. Once we have the logic in place, we can replace the pass statement with the code that checks if the player has won the game and sets game_won to True when they do. 
-
+    pass # This will do nothing and the loop will run indefinitely until we implement the logic to check for the winning condition. Once we have the logic in place, we can replace the pass statement with the code that checks if the player has won the game and sets game_won to True when they do..

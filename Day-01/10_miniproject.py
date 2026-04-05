@@ -17,4 +17,4 @@ print(f"Name: {name}") # This will print the name of the user
 print(f"Age: {age}") # This will print the age of the user
 print(f"City: {city}") # This will print the city of the user
 print(f"Hobby: {hobby}") # This will print the hobby of the user
-print("="*30) # This will print another line of 30 asterisks to decorate the card
+print("="*30) # This will print another line of 30 asterisks to decorate the card.

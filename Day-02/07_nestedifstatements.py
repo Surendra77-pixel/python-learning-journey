@@ -65,4 +65,4 @@ if score >= 85:
         print("pass but low attendance")
 else:
     print("fail")
-    #In this example, the nested if statements check for multiple conditions related to a student's score, attendance, and submission status to determine if they pass or fail.
+    #In this example, the nested if statements check for multiple conditions related to a student's score, attendance, and submission status to determine if they pass or fail..

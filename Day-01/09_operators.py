@@ -111,4 +111,4 @@ print(2 ** 3 + 4) #Output: 12 - In this expression, the exponentiation operator 
 #3. Associativity of operators- The associativity of operators determines the order in which operators of the same precedence are evaluated in an expression. In Python, most operators are left-associative, which means that they are evaluated from left to right. For example, in the expression 10 - 5 + 2, the subtraction will be evaluated first (10 - 5), resulting in 5, and then the addition will be evaluated (5 + 2), giving us 7.
 
 #example of operator associativity:
-print(10 - 5 + 2) #Output: 7 - In this expression, the subtraction operator - is evaluated first, resulting in 5. Then, the addition operator + is evaluated, giving us the final result of 7.
+print(10 - 5 + 2) #Output: 7 - In this expression, the subtraction operator - is evaluated first, resulting in 5. Then, the addition operator + is evaluated, giving us the final result of 7..

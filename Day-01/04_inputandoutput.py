@@ -15,4 +15,4 @@ print("You are " + age + " years old.") # Output: You are [age] years old.
 x=5
 y=10
 print("The value of x is:", x) # Output: The value of x is: 5
-print("The value of y is:", y) # Output: The value of y is:10
+print("The value of y is:", y) # Output: The value of y is:10.

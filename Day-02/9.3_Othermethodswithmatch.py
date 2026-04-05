@@ -107,5 +107,4 @@ match num:
         #output:
         #Enter number: 5
         #Between 1 and 10
-        #explanation: In this example, we are using a single variable num to match against the cases. The first case checks if num is in the range from 1 to 10 (inclusive) using the membership operator in with the range function. If num is between 1 and 10, it prints "Between 1 and 10". The second case is the default case that matches anything that doesn't match the first case, and it prints "Out of range".
-
+        #explanation: In this example, we are using a single variable num to match against the cases. The first case checks if num is in the range from 1 to 10 (inclusive) using the membership operator in with the range function. If num is between 1 and 10, it prints "Between 1 and 10". The second case is the default case that matches anything that doesn't match the first case, and it prints "Out of range"..

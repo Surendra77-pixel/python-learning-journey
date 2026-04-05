@@ -58,5 +58,4 @@ print("My name is %s and I am %d years old" % (name, age)) #this gives the ouput
  #%-used for the number of digits 
 
 
- #Thus the strings is used
- 
+ #Thus the strings is used .
