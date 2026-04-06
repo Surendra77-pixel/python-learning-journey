@@ -5,7 +5,7 @@
 
 fruits = ["apple", "banana", "cherry", "date", "fig"]
 fruits[1] = "blueberry"
-print(fruits) #output: ['apple', 'blueberry', 'cherry', 'date', 'fig']
+print(fruits) #output: ['apple', 'blueberry', 'cherry', 'date', 'fig']C
 
 Thelist=["Apple","banana","cherry","date","fig"]
 Thelist[2]="grape"
