@@ -40,6 +40,11 @@ fruits = ["apple", "banana", "cherry", "date", "fig"]
 del fruits[1]
 print(fruits) #output: ['apple', 'cherry', 'date', 'fig']
 
+#if you want to delete the all fruits list, you can use the del statement with the list name:
+fruit = ["apple", "banana", "cherry", "date", "fig"]
+del fruits
+print(fruit) #output: NameError: name 'fruits' is not defined - The del statement is used to delete the entire list fruits. After the deletion, trying to access the variable fruits will result in a NameError because it is no longer defined.
+
 #4. using the clear() method -
 
 #  The clear() method is used to remove all items from the list, resulting in an empty list.

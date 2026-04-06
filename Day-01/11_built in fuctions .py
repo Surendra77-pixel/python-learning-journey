@@ -113,3 +113,55 @@ print(my_list) #output: [1, 2, 3]
 #15.help() -
 # The help() function is used to get information about a function, class, or module.
 print(help(print)) #output: Help on built-in function print in module builtins:.
+
+#16.pow() -
+# The pow() function is used to calculate the power of a number. It takes two arguments: the base and the exponent, and returns the result of base raised to the power of exponent.
+print(pow(2, 3)) #output: 8
+print(pow(2, 4)) #output: 16
+
+
+#16.zip() -
+# The zip() function is used to combine two or more iterables into a single iterable of tuples. It takes multiple iterables as arguments and returns an iterator that produces tuples containing the corresponding elements from each iterable.
+list1 = [1, 2, 3]
+list2 = ['a', 'b', 'c']
+zipped = zip(list1, list2)
+print(list(zipped)) #output: [(1, 'a'), (2, 'b'), (3, 'c')]
+
+
+#17.map() -
+# The map() function is used to apply a function to each item in an iterable. It takes a function and an iterable as arguments and returns an iterator that produces the results of applying the function to each item in the iterable.
+numbers = [1, 2, 3, 4]
+result = map(lambda x: x * 2, numbers)
+print(list(result)) #output: [2, 4, 6, 8]
+
+
+#18.filter() -
+# The filter() function is used to filter items in an iterable based on a specified condition. It takes a function and an iterable as arguments and returns an iterator that produces the items from the iterable for which the function returns True.
+numbers = [1, 2, 3, 4, 5]
+result = filter(lambda x: x % 2 == 0, numbers)
+print(list(result)) #output: [2, 4]
+
+
+#19.any() and all() -
+# The any() function returns True if at least one element of the iterable is true, while the all() function returns True if all elements of the iterable are true. They take an iterable as an argument and return a boolean value.
+numbers = [0, 1, 2, 3]  
+print(any(numbers)) #output: True
+print(all(numbers)) #output: False
+#explanation: The any() function returns True because there is at least one non-zero element in the list (1, 2, 3). The all() function returns False because not all elements in the list are non-zero (0 is considered false).
+
+
+#20.type() checking -
+# The type() function can also be used to check the type of an object. It returns the type of the object as a string, which can be useful for debugging and ensuring that your code is working with the expected data types.
+my_string = "Hello, World!"
+print(type(my_string)) #output: <class 'str'>
+
+
+
+#isinstance() -
+# The isinstance() function is used to check if an object is an instance of a specific class or a subclass thereof. It takes two arguments: the object to check and the class (or tuple of classes) to check against. It returns True if the object is an instance of the specified class or a subclass, and False otherwise.
+my_string = "Hello, World!"
+print(isinstance(my_string, str)) #output: True
+print(isinstance(my_string, int)) #output: False
+
+
+

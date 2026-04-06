@@ -1,6 +1,10 @@
                                
                                #strings in python
 
+#1.In the python the non empty string is considered as the true and empty string is considered as the false.
+
+#2.The input in the string is always a string even if we enter the number it will be considered as the string.
+
 #The strings in the python plays a crucial role in programming as they are used to represent and manipulate text data. A string is a sequence of characters enclosed in either single quotes (' ') or double quotes (" "). Strings can contain letters, numbers, symbols, and whitespace characters. They are immutable, meaning that once a string is created, it cannot be changed. However, you can create new strings by concatenating or slicing existing strings.
 
 #what happens when we use the double quotes in the string??
