@@ -26,5 +26,6 @@ print(fruits[-5:-2]) #output: ['kiwi', 'lemon', 'mango']
 print(fruits[-3:]) #output: ['mango', 'orange']
 print(fruits[:-3]) #output: ['apple', 'banana', 'cherry', 'date', 'fig', 'grape', 'kiwi']   
 print(fruits[:]) #output: ['apple', 'banana', 'cherry', 'date', 'fig', 'grape', 'kiwi', 'lemon', 'mango', 'orange']
-print(fruits[-1::-1]) #output: ['orange', 'mango', 'lemon', 'kiwi', 'grape', 'fig', 'date', 'cherry', 'banana', 'apple']
+print(fruits[-1::-1]) #output: ['orange', 'mango', 'lemon', 'kiwi', 'grape', 'fig', 'date', 'cherry', 'banana', 'apple'] this and the reverse method like the -
+print(fruits[::-1]) #are the same methods 
 

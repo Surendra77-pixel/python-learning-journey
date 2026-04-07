@@ -24,3 +24,4 @@ y.remove("banana")
 Thistuple=tuple(y)
 print(Thistuple) #output: ('apple', 'cherry') - In this example, we first convert the tuple Thistuple to a list y. Then we use the remove() method to remove the item "banana" from the list. Finally, we convert the list back to a tuple and assign it to Thistuple. The resulting tuple contains only "apple" and "cherry".
 
+#clear dosent work in the tuple because of immutability - The clear() method is a list method that removes all items from a list. Since tuples are immutable, they do not have a clear() method, and you cannot modify the contents of a tuple after it has been created. Therefore, trying to call clear() on a tuple will result in an AttributeError because the method does not exist for tuples.
