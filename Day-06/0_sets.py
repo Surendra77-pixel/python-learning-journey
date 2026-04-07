@@ -15,6 +15,9 @@ set2 = {3, 4, 5}
 combined_set = set1.union(set2)  # Using the union() method
 print(combined_set)  # Output: {1, 2, 3, 4, 5}
 
+
+
+
 #rules in sets -------------------------------------
 
 #1.a set will have unique values - a set cannot contain duplicate values. If you try to add a duplicate value to a set, it will be ignored and the set will remain unchanged.
