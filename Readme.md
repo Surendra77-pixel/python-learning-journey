@@ -1,4 +1,4 @@
-# 🐍 Python Learning Journey — Surendra Manthri
+## 🐍 Python Learning Journey — Surendra Manthri
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python&logoColor=white)
 ![Days](https://img.shields.io/badge/Days%20Completed-3-brightgreen)
