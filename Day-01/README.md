@@ -7,7 +7,7 @@
 
 ---
 
-## 📌 Overview
+## 📌 Overview-
 
 This repository documents my **Day 1 journey in Python programming**, where I focused on building a **strong foundation in core concepts**.
 
