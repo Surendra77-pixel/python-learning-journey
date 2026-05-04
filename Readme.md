@@ -27,7 +27,7 @@ This repository is a **structured, day-by-day record** of my Python learning jou
 
 ---
 
-## 📁 Repository Structure
+## 📁 Repository Structure of this learning
 
 ```
 python-learning-journey/
