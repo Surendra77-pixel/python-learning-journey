@@ -23,3 +23,36 @@ def my_function(name, age, /):
 my_function(name="surendra", age="20")#output: TypeError: my_function() got some positional-only arguments passed as keyword arguments - In this example, the function my_function is defined with positional-only parameters (name and age). When we try to call the function using keyword arguments (name="surendra", age="20"), it raises a TypeError because the function expects these parameters to be provided as positional arguments, not as keyword arguments. To fix this error, we need to call the function with positional arguments like this: my_function("surendra", "20").
 
 
+#unpacking the positional-only parameters-
+
+# Define a function that takes two arguments: 'name' and 'location'
+def greet(name, location):
+    # Print a greeting message using the provided arguments
+    print("Hi there", name, "how is the weather in", location)
+
+# Call the function using keyword arguments
+greet(name="Alice", location="New York")  
+# Output: Hi there Alice how is the weather in New York
+
+# Create a dictionary with keys matching the function's parameter names
+my_dict = {"name": "Alice", "location": "New York"}
+
+# Call the function using dictionary unpacking
+greet(**my_dict)  
+# The ** operator unpacks the dictionary, passing its key-value pairs 
+# as keyword arguments to the function.
+# Output: Hi there Alice how is the weather in New Yorkz
+
+
+#how to unpack aruguments in the function definition-
+
+def greet(*, name, location):
+    print("Hi there", name, "how is the weather in", location)
+greet(name="Alice", location="New York")
+# Output: Hi there Alice how is the weather in New York
+my_dict = {"name": "Alice", "location": "New York"}
+greet(**my_dict)
+# The ** operator unpacks the dictionary, passing its key-value pairs as keyword arguments to the function.
+# Output: Hi there Alice how is the weather in New York
+ 
+

@@ -90,3 +90,112 @@ def my_function(animal , name , age):
     print(f"Animal: {animal}, Name: {name}, Age: {age}")
 my_function(name="Buddy", age=5, "Dog") #output: SyntaxError: positional argument follows keyword argument - In this example, we attempt to call the function my_function with a mix of keyword and positional arguments, but we place the positional argument "Dog" after the keyword arguments. This is invalid syntax in Python because positional arguments must come before keyword arguments in a function call. As a result, it raises a SyntaxError indicating that a positional argument follows a keyword argument. To fix this error, we need to ensure that all positional arguments are placed before any keyword arguments in the function call.  
 
+#function without the parameter
+def generate_full_name ():
+    first_name = 'Asabeneh'
+    last_name = 'Yetayeh'
+    space = ' '
+    full_name = first_name + space + last_name
+    print(full_name)
+generate_full_name () # calling a function
+
+def add_two_numbers ():
+    num_one = 2
+    num_two = 3
+    total = num_one + num_two
+    print(total)
+add_two_numbers()
+
+#Function returining a value
+
+def generate_full_name ():
+    first_name = 'Asabeneh'
+    last_name = 'Yetayeh'
+    space = ' '
+    full_name = first_name + space + last_name
+    return full_name
+print(generate_full_name())
+
+def add_two_numbers ():
+    num_one = 2
+    num_two = 3
+    total = num_one + num_two
+    return total
+print(add_two_numbers())
+
+#The function with the parameter
+
+def greetings (name):
+    message = name + ', welcome to Python for Everyone!'
+    return message
+
+print(greetings('Asabeneh'))
+
+def add_ten(num):
+    ten = 10
+    return num + ten
+print(add_ten(90))
+
+def square_number(x):
+    return x * x
+print(square_number(2))
+
+def area_of_circle (r):
+    PI = 3.14
+    area = PI * r ** 2
+    return area
+print(area_of_circle(10))
+
+def sum_of_numbers(n):
+    total = 0
+    for i in range(n+1):
+        total+=i
+    return total
+print(sum_of_numbers(10)) # 55
+print(sum_of_numbers(100)) # 5050
+
+
+#Function returining a value
+
+#Functions return values using the return statement. If a function has no return statement, it returns None. Let us rewrite the above functions using return. From now on, we get a value from a function when we call the function and print it.
+
+def generate_full_name ():
+    first_name = 'Asabeneh'
+    last_name = 'Yetayeh'
+    space = ' '
+    full_name = first_name + space + last_name
+    return full_name
+print(generate_full_name())
+
+def add_two_numbers ():
+    num_one = 2
+    num_two = 3
+    total = num_one + num_two
+    return total
+print(add_two_numbers())
+
+#If we do not return a value with a function, then our function is returning None by default. To return a value with a function we use the keyword return followed by the variable we are returning. We can return any kind of data types from a function.
+
+#Returning a string: Example:
+
+def print_name(firstname):
+    return firstname
+print_name('Asabeneh') # Asabeneh
+
+def print_full_name(firstname, lastname):
+    space = ' '
+    full_name = firstname  + space + lastname
+    return full_name
+print_full_name(firstname='Asabeneh', lastname='Yetayeh')
+
+
+def add_two_numbers (num1, num2):
+    total = num1 + num2
+    return total
+print(add_two_numbers(2, 3))
+
+def calculate_age (current_year, birth_year):
+    age = current_year - birth_year
+    return age
+print('Age: ', calculate_age(2019, 1819))
+

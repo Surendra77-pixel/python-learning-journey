@@ -27,3 +27,14 @@ def my_function(positional_arg, *, keyword_arg):
     print(f"Keyword argument: {keyword_arg}")
 my_function("positional value", keyword_arg="keyword value")#output: Positional argument: positional value Keyword argument: keyword value - In this example, the function my_function is defined with one positional-only parameter (positional_arg) and one keyword-only parameter (keyword_arg). When we call the function, we provide a positional argument ("positional value") for the positional-only parameter and a keyword argument (keyword_arg="keyword value") for the keyword-only parameter. The function then executes its code and prints the values of both parameters. This demonstrates how we can combine positional-only and keyword-only parameters in a single function definition in Python.
 
+#7. unpacking the keyword-only parameters-
+
+def greet(name, location):
+    print("Hi there", name, "how is the weather in", location)
+greet(name="Alice", location="New York")
+# Output: Hi there Alice how is the weather in New York
+my_dict = {"name": "Alice", "location": "New York"}
+greet(**my_dict)
+# The ** operator unpacks the dictionary, passing its key-value pairs as keyword arguments to the function.
+# Output: Hi there Alice how is the weather in New York
+
