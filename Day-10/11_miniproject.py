@@ -67,3 +67,24 @@ while True:
 
     else:
         print("Invalid choice! Try again.")
+
+
+#in this miniproject, we have created a menu-driven calculator that allows the user to perform various mathematical operations such as addition, subtraction, multiplication, division, square root, power, logarithm, and trigonometric functions. The user can choose an operation from the menu, input the required numbers, and get the result. The program continues to run until the user chooses to exit by entering "9". The calculator also handles division by zero by checking if the second number is zero before performing the division operation
+
+#output:
+
+#===== SMART CALCULATOR =====
+#1. Addition
+#2. Subtraction
+#3. Multiplication
+#4. Division
+#5. Square Root
+#6. Power
+#7. Logarithm
+#8. Trigonometry (sin, cos, tan)
+#9. Exit
+#Enter your choice: 1
+#Enter first number: 10
+#Enter second number: 5
+#Result: 15.0
+
