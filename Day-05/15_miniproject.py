@@ -68,3 +68,28 @@ for student in students:
         count += 1
 
 print("\n Students scoring above 80:", count)
+
+#output:
+#----- Student Records -----
+#Name: Surendra
+#Age: 20
+#Marks: 85
+#--------------------------
+#Name: praveen
+#Age: 21
+#Marks: 90
+#--------------------------
+#Name: Vardhan
+#Age: 19
+#Marks: 78
+# Topper:
+#praveen with marks 90
+# Average Marks: 84.33333333333333
+#Enter student name to search: Surendra
+#Student Found:
+#Name: Surendra
+#Age: 20
+#Marks: 85
+# Students scoring above 80: 2
+
+#In this miniproject, we have created a simple student record system using tuples. We have stored student data in tuples and performed various operations such as finding the topper, calculating average marks, searching for a student by name, and counting students scoring above a certain threshold. The use of tuples ensures that the student records are immutable and cannot be changed once created, making it a suitable choice for storing fixed data like student information.
