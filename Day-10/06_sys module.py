@@ -3,6 +3,19 @@
 
 #The sys module in Python provides access to some variables used or maintained by the interpreter and to functions that interact strongly with the interpreter. It is a built-in module that is always available in Python.
 
+#The sys module in Python is a built-in module that helps Python interact with the system and the Python interpreter itself.
+It gives information and control over things like:
+1)Python version
+2)Command-line arguments
+3)Memory limits
+4)Program exit
+5)Input/output streams
+You don’t need to install it because it already comes with Python.
+
+Python-
+import sys
+
+
 #Some common functions and variables provided by the sys module include:
 
 #1.argv:
