@@ -72,3 +72,30 @@ while True:
     # Invalid choice
     else:
         print("⚠️ Invalid choice! Try again.")
+
+# This mini project allows users to create a simple dictionary where they can add, search, update, delete, and view all words along with their meanings. The program uses a while loop to continuously prompt the user for actions until they choose to exit. The dictionary is implemented using a Python dictionary data structure, where the word is the key and its meaning is the value.
+
+#output:
+#📚 --- SMART DICTIONARY ---
+#1. Add Word
+#2. Search Word
+#3. Update Word
+#4. Delete Word
+#5. Show All Words
+#6. Exit
+#Enter your choice: 1
+#Enter word: Python
+#Enter meaning: A high-level programming language.
+#✅ Word added successfully!
+
+#📚 --- SMART DICTIONARY ---
+#1. Add Word
+#2. Search Word
+#3. Update Word
+#4. Delete Word
+#5. Show All Words
+#6. Exit
+#Enter your choice: 2
+#Enter word to search: Python
+#📖 Meaning: A high-level programming language.
+
