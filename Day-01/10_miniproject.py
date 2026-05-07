@@ -18,3 +18,20 @@ print(f"Age: {age}") # This will print the age of the user
 print(f"City: {city}") # This will print the city of the user
 print(f"Hobby: {hobby}") # This will print the hobby of the user
 print("="*30) # This will print another line of 30 asterisks to decorate the card.
+
+#output:
+#Enter your name: Surendra
+#Enter your age: 22
+#Enter your city: Chennai
+#Enter your hobby: Coding
+
+#==============================
+#     user information card
+#==============================
+#Name: Surendra
+#Age: 22
+#City: Chennai
+#Hobby: Coding
+#==============================
+
+#In this miniproject, we have created a simple user information card that takes the user's name, age, city, and hobby as input and then prints it in a formatted way using f-strings and escape strings. The card is decorated with lines of asterisks to make it visually appealing.   
