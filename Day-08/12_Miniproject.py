@@ -79,3 +79,30 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# In this mini project, we have created a simple quiz game that consists of 5 questions. The user is prompted to answer each question, and at the end of the quiz, their score and percentage are displayed along with a pass/fail message. The user also has the option to replay the quiz if they wish.
+
+#output:
+# Question 1: What is the capital of India?
+#A. Mumbai
+#B. Delhi
+#C. Chennai
+#D. Kolkata
+# Enter your answer (A/B/C/D): B
+# Correct!
+
+# Question 2: Which language is used for web apps?
+#A. Python
+#B. Java
+#C. JavaScript
+#D. All
+# Enter your answer (A/B/C/D): D
+# Correct!
+
+# Question 3: What does CPU stand for?
+#A. Central Process Unit
+#B. Central Processing Unit
+#C. Computer Personal Unit
+#D. Central Processor Unit
+# Enter your answer (A/B/C/D): B
+# Correct!
