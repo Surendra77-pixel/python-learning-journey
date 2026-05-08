@@ -80,6 +80,7 @@ except:
 #10.one try can have the multiple except blocks to handle different types of exceptions. This allows you to provide specific error handling for different types of errors that may occur in the try block. Each except block can catch a specific type of exception, allowing you to handle each error case appropriately.
 
 #for example:
+
 try:
     num1 = int(input("Enter first number: "))
     num2 = int(input("Enter second number: "))
