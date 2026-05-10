@@ -19,6 +19,13 @@ lines_to_append = ['Fourth line.\n', 'Fifth line.\n', 'Sixth line.\n']
 with open('example.txt', 'a') as file:
     file.writelines(lines_to_append)  # Appends multiple lines to the end of the file at once.
 # When appending to a file, it's important to handle exceptions that may occur, such as IOError. You can use a try-except block to catch these exceptions and handle them gracefully. For example:
+try:
+    with open('example.txt', 'a') as file:
+        file.write('This is an example of appending to a file.')
+except IOError:
+    print("An error occurred while appending to the file.")
+#output: This is an example of appending to a file.
+#Expalanation: In this example, we use the open() function with 'a' mode to append a line of text to the end of the file named "example.txt". If "example.txt" does not exist, it will be created. If it already exists, the new content will be added to the end of the file without overwriting the existing content. We also handle any potential IOError that may occur during the appending process.what is the ioerror in python? An IOError in Python is an exception that occurs when an input/output operation fails. This can happen for various reasons, such as trying to read from a file that does not exist, trying to write to a file that is read-only, or encountering issues with the file system. When an IOError occurs, it typically indicates that there was a problem with the file or the I/O operation being performed.in above example if the example.txt file is read only then it will raise an IOError when we try to append to it. By using a try-except block, we can catch this exception and print a message indicating that an error occurred while appending to the file. This allows us to handle the error gracefully without crashing the program.
 
 #example-
 
