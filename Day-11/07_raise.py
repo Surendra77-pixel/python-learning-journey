@@ -26,9 +26,9 @@ try:
 
     if age < 0:
         raise ValueError("Invalid age")
-
 except Exception as e:
     print(e)
+ #output: Invalid age (because we are catching the exception raised by the raise statement using a try-except block. When the ValueError is raised, it will be caught by the except block, and the error message "Invalid age" will be printed to the console.)
 
 
 #realtime example of raise statement:
@@ -37,6 +37,19 @@ password = "123"
 
 if len(password) < 6:
     raise ValueError("Password too short") #output: ValueError: Password too short (because we are checking if the length of the password is less than 6 characters. If it is, we raise a ValueError with a custom error message. When this code is executed, it will raise the ValueError exception, and the program will terminate unless the exception is caught and handled by an except block.)
+
+password = "123"
+
+try:
+    if len(password) < 6:
+        raise ValueError("password is incorrect")
+
+except Exception as e:
+    print(e)
+
+finally:
+    print("yes") #output: password is incorrect
+#yes (because we are checking if the length of the password is less than 6 characters. If it is, we raise a ValueError with a custom error message. When this code is executed, it will raise the ValueError exception, and the program will jump to the except block where the error message "password is incorrect" will be printed. After handling the exception, the finally block will be executed, which will print "yes" to the console. The finally block is executed regardless of whether an exception was raised or not, so it will always run after the try-except block.)
 
 
 #using the try , except block to catch the exception raised by the raise statement:
@@ -48,7 +61,7 @@ try:
         raise ValueError("Invalid age")
 
 except Exception as e:
-    print(e)#output: Invalid age (because we are catching the exception raised by the raise statement using a try-except block. When the ValueError is raised, it will be caught by the except block, and the error message "Invalid age" will be printed to the console.)
+    print(e)#output: Invalid age (because we are catching the exception raised by the raise statement using a try-except block. When the ValueError is raised, it will be caught by the except block, and the error message "Invalid age" will be printed to the console.) and the program will continue to execute after handling the exception. If there were any code after the except block, it would be executed as well. In this case, since there is no code after the except block, the program will simply end after printing the error message.if i not gave the except block, the program will terminate with an error message when the exception is raised. However, by using a try-except block, we can catch the exception and handle it gracefully, allowing the program to continue running even after an error occurs.
 
 #clearly, the raise statement is a powerful tool in Python that allows you to create and raise exceptions intentionally. It can be used to enforce certain conditions in your code and provide meaningful error messages when those conditions are not met.
 
